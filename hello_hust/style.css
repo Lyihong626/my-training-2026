@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix::after {
+    display: block;
+    clear: both;
+}
+
+.top {
+    padding-top: 30px;
+    width: 100%;
+    height: 300px;
+    background-image: url("image/heabd.jpg");/*CSS中地址使用左斜杠/*/
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.posi {
+    width: 75%;
+    height: 200px;
+    margin: 0 auto;
+}
+/*头部内容*/
+.top1{
+    display: flex;
+    padding-bottom: 30px;
+    /*align-items: center;*/
+}
+.logo{
+    float: left;
+    width: 60%;
+    height: 60%;
+}
+.logoimg{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.top_right{
+    display: flex;
+    margin-left: auto;/*占满左边的剩余空间”，结果就是元素向右移动*/
+}
+.searchbox{
+    float: right;
+    display: flex;/*让输入框和搜索icon在同一行*/
+    margin: auto 0;
+    width: 300px;
+    height: 50px;
+    background: transparent;
+    border: 1px white solid;
+}
+.search_input{
+    background: transparent;
+    float: left;
+    width: 250px;
+    height: 50px;
+    font-size: 25px;
+    border: none;
+}
+.search_input::placeholder{
+    color: white;
+    opacity: 0.5;
+}
+.search_icon{
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    border: none;
+}
+
+
+.old_address{
+    float: right;
+    color: white;
+    font-size: 25px;
+    margin-left: auto;
+}
+
+/* 七个盒子*/
+.slideshow {
+    background-color: rgb(153, 123, 84);
+}
+
+.content1 {
+    background-color: aqua;
+}
+
+.content2 {
+    background-color: rgb(210, 121, 89);
+}
+
+.content3 {
+    background-color: rgb(120, 185, 137);
+}
+
+.content4 {
+    background-color: rgb(185, 117, 199);
+}
+
+.content5 {
+    background-color: rgb(218, 104, 125);
+}
+
+.bottom {
+    background-color: rgb(68, 98, 196);
+}
