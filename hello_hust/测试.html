@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu_item {
+            position: relative;
+            /* 关键定位 */
+            width: 150px;
+            /* 上方固定宽度 */
+            background: #333;
+        }
+
+        .menu_item>a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .menu_item>ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: white;
+            display: none;
+            /* 默认隐藏，hover时显示 */
+        }
+
+        .menu_item>ul>li {
+            width: auto;
+            /* 由内容撑开 */
+            white-space: nowrap;
+            /* 强制不换行 */
+            background-color: bisque;
+        }
+
+        .menu_item>ul>li a {
+            display: block;
+            /* 让链接填满 li */
+            padding: 8px 12px;
+            white-space: nowrap;
+            /* 再次确保文字不换行 */
+            color: black;
+            text-decoration: none;
+        }
+
+        /* 悬停显示下拉菜单 */
+        .menu_item:hover>ul {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu_item">
+        <a href="#">上方固定宽度项</a>
+        <ul>
+            <li><a href="#">短</a></li>
+            <li><a href="#">中等长度文字</a></li>
+            <li><a href="#">特别特别特别特别长的文字示例</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
