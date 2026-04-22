@@ -1,3 +1,8 @@
+/*
+window.onload 是一个事件属性，
+意思是：当整个网页（包括图片、样式、外部文件等所有资源）全部加载完成后，自动执行后面指定的函数。
+*/ 
+
 window.onload = function startSlideShow() {
     let images = document.querySelectorAll(".big_box_img");
     let index = 0;
