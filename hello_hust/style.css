@@ -134,13 +134,14 @@ input.search_input:focus{
 .menu_item>ul{
     /*通过定位，使得下拉列表脱离父元素的宽度relative和absolute*/
     position: absolute;
-    
+
     top: 100%;/*让元素的上边缘，对齐到父元素内容区的下边缘*/
     left: 0;
     min-width: 100%
 }
 /*难点：宽度由内容撑开,发现有宽度继承的原因*/
 .menu_item>ul>li{
+    font-size: 15px;
     padding: 0 5px;
     list-style-type: none;
     /*改变下拉列表的颜色*/
@@ -161,7 +162,12 @@ input.search_input:focus{
 }
 
 
-/* 七个盒子*/
+
+/*轮播图部分*/
+.wrapper-outer{
+    background: url("image/banbd.jpg");
+}
+
 .slideshow {
     background-color: rgb(153, 123, 84);
 }
