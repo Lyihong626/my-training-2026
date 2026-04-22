@@ -259,10 +259,7 @@ input.search_input:focus{
     display: none;
 }
 
-.box_zhiding1>ul{
-    list-style: none;
-}
-.box_zhiding1 li{
+.box_zhiding1 a{
     width: 10px;
     height: 10px;
     margin: 10px;
@@ -277,7 +274,11 @@ input.search_input:focus{
     
 }
 /*鼠标放到具体原点，颜色加深*/
-.box_zhiding1 li:hover{
+.box_zhiding1 a:hover{
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.box_zhiding1 a.big_focus_page{
     background-color: rgba(255, 255, 255, 1);
 }
 
