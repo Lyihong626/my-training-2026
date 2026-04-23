@@ -76,5 +76,15 @@ window.onload = function startSlideShow() {
     }
 
 
+    //自动轮播图，鼠标悬浮暂停
+    let slidState = document.querySelector(".ct3_tdiv");
+    slidState.addEventListener("mouseenter",()=>{
+        slidState.classList.add("paused");
+    })
+    slidState.addEventListener("mouseleave",()=>{
+        slidState.classList.remove("paused");
+    })
+
+
 }
 

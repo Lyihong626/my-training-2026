@@ -651,12 +651,18 @@ input.search_input:focus{
     margin-bottom: 30px;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: auto;
     display: flex;
+}
+/*这是一个“伪元素”，专门用来选中滚动条的样式*/
+.ct3_tdiv::-webkit-scrollbar{
+    display: none;
 }
 .group1{
     display: flex;
-    gap: 0 45px;
+    gap: 0 50px;
+    animation: spin 20s infinite linear;
+    padding-right: 50px;
 }
 .card{
     height: 250px;
@@ -673,6 +679,16 @@ input.search_input:focus{
     color: #3B3B3B;
 }
 
+/*关键帧动画*/
+@keyframes spin{
+    from{translate: 0;}
+    to{translate: -100%;}
+}
+
+/*鼠标悬浮暂停*/
+.ct3_tdiv.paused .group1{
+    animation-play-state: paused;
+}
 
 
 
@@ -812,6 +828,11 @@ input.search_input:focus{
 
 /*---------------------------------------底部----------------------------------------*/
 
+.ct_bottom{
+    width: 100%;
+    height: 230px;
+    background-color: #105fa5;
+}
 
 .bottom {
     background-color: rgb(68, 98, 196);
