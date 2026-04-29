@@ -13,6 +13,7 @@
     width: 100%;
     height: 170px;
     background: #105fa5 url("image/heabd.jpg") no-repeat center;/*CSS中地址使用左斜杠/*/
+    border-bottom: 5px solid #d6bd88;
 
 }
 .posi {
@@ -23,6 +24,7 @@
 /*-------------------------------------------------头部内容-------------------------------------------------*/
 .topbox{
     height: 100%;
+    
 }
 .top1{
     display: flex;
@@ -62,8 +64,9 @@
     font-size: 15px;
     border: none;
     color:white;
-    opacity: 0.5;
+    opacity: 1;
 }
+
 .search_input::placeholder{
     font-size: 13px;
     color: white;
@@ -94,12 +97,13 @@ input.search_input:focus{
     color: white;
 }
 
-/*munebox*/
+/*-----------------------munebox--------------------------------*/
 .menubox{
     background:  #105fa5 url("image/navbd.jpg") no-repeat center;
     height: 40px;
     display: block;
     font-size:18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .menu>ul{
@@ -346,6 +350,7 @@ input.search_input:focus{
     display: flex;
 }
 
+
 .ct1_div1_right{
     flex: 1;
     margin-left: 10px;
@@ -365,7 +370,24 @@ input.search_input:focus{
     width: 100%;
     top: 0;
     left: 0;
+
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+
+    /* display: none; */
+    /* visibility: hidden; 这个效果不太好，轮播图切换时候跳动 */
+    pointer-events: none;  /* 禁止点击 */
 }
+
+.left_img.left_img_show{
+    opacity: 1;
+
+    /* display: block; */
+    /* visibility: visible; */
+    /* z-index: 1; */
+    pointer-events: auto; /* 只有显示的允许点击 */
+}
+
 
 
 
@@ -377,8 +399,11 @@ input.search_input:focus{
 }
 
 .slid_bottom a{
+    padding-left: 5px;
     text-decoration: none;/*取消下划线*/
     color: #105fa5;
+
+    transition: color 0.5s ease-in-out;
 }
 
 .slid_bottom:hover a{
@@ -398,6 +423,7 @@ input.search_input:focus{
     border-radius: 5px;
 
     display: none;
+    z-index: 2;
 
 }
 .ct1_slid_right{
@@ -412,6 +438,7 @@ input.search_input:focus{
     border-radius: 5px;
 
     display: none;
+    z-index: 2;
 
 }
 
@@ -445,6 +472,7 @@ input.search_input:focus{
     display: flex;
     align-items: center;/*垂直居中*/
     justify-content: right;
+    z-index: 2;
 }
 .box_zhiding2>a{
     display: flex;
@@ -458,6 +486,8 @@ input.search_input:focus{
 .box_zhiding2 .little_focus_page{
     background-color: #105fa5;
 }
+
+
 
 /*中间内容*/
 .ct1_div1_right li{
@@ -680,6 +710,11 @@ input.search_input:focus{
 }
 
 /*关键帧动画*/
+/*从左向右移动的动画  实际上是向左移动，因为 -100% 是负方向
+from是起始状态，to是结束状态
+translate: 0 意思是元素保持原来的位置
+translate: -100% 意思是元素向左移动自身宽度的 100%
+*/
 @keyframes spin{
     from{translate: 0;}
     to{translate: -100%;}
@@ -773,7 +808,7 @@ input.search_input:focus{
     height: 100%;
 }
 .inner_source>div{
-    width: 100%;
+    width: 145px;
     height: 70px;
     border-radius: 10px;
     text-align: center;
@@ -835,5 +870,78 @@ input.search_input:focus{
 }
 
 .bottom {
-    background-color: rgb(68, 98, 196);
+    /* background-color: rgb(68, 98, 196); */
+    position: relative;
 }
+
+.bt_top{
+    height: 85px;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.3);
+    display: flex;
+}
+.bt_top_text{
+    display: inline-block;
+    padding: 25px 15px;
+    width: auto;
+    white-space: nowrap;/*强制不换行*/
+    
+}
+.bt_top_text>a{
+    font-size: 14px;
+    text-decoration: none;
+    font-family: "微软雅黑";
+    color: #FFFFFF;
+    line-height: 35px;
+}
+.bt_text1{
+    opacity: 1;
+    font-weight: 700;
+}
+.bt_text2{
+    opacity: 0.8;
+}
+.bt_bottom{
+    padding: 45px 0;;
+}
+.copyright{
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 400;
+    font-size: 13px;
+    font-family: "微软雅黑";
+    line-height: 28px;
+    opacity: 0.7;
+}
+.erweima{
+    position: absolute;
+    bottom: 25px;
+    right: 0;
+}
+.erweima ul{
+    background-color: #81b1e1;
+    display: block;
+    list-style: none;
+}
+.ewm{
+    float: right;
+}
+.vxbox{
+    margin: 0 10px;
+}
+.vxbox a{
+    display: block;
+    font-size: 13px;
+    color: white;
+    text-align: center;
+}
+.vxbox img{
+    width: 80px;
+    height: 80px;
+    transition: transform 0.2s ease-in-out;
+}
+.vxbox img:hover{
+    transform: scale(1.1);
+}
+
+
+
