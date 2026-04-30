@@ -1,11 +1,209 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>登录注册页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            outline: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            background: linear-gradient(to right, rgb(255, 255, 255), rgb(88, 116, 230));
+        }
+
+        .box {
+            width: 900px;
+            height: 500px;
+            display: flex;
+            position: relative;
+            /* background-color: #fff; */
+            margin: auto;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.3);
+
+        }
+        .pre-box,.login-form,.register-form{
+            flex: 1;
+            height: 100%;
+        }
+        .pre-box{
+            /*绝对定位元素会创建新的层叠上下文，并且默认会显示在普通块级元素上方。*/
+            position: absolute;
+            width: 450px;
+            height: 100%;
+            right: 0;
+            top: 0;
+            border-radius: 20px;
+            background-color: rgb(88, 116, 230);
+            box-shadow: 4px 4px 3px rgba(0, 0,0, 0.1);
+            transition: 0.5s ease-in-out;
+        }
+        .pre-box h1{
+            margin-top: 100px;
+            text-align: center;
+            letter-spacing: 5px;
+            color: white;
+            text-shadow: 4px 4px 3px rgba(0, 0,0, 0.1);
+        }
+        .pre-box p{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin: 0;
+            color: white;
+            font-weight: bold;
+            text-shadow: 4px 4px 3px rgba(0, 0,0, 0.1);
+        }
+        .img-box{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 20px auto;
+            box-shadow: 4px 4px 3px rgba(0, 0,0, 0.1);
+        }
+        .img-box img{
+            width: 100%;
+            height: 100%;
+            /* 保持比例裁剪填充 */
+            object-fit: cover;
+        }
+        .title-box{
+            height: 200px;
+            line-height: 300px;
+        }
+        .title-box h1{
+            text-align: center;
+            letter-spacing: 5px;
+            color: white;
+            text-shadow: 4px 4px 3px rgba(0, 0,0, 0.1);
+        }
+        .input-box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input{
+            width: 60%;
+            height: 40px;
+            margin-bottom: 4px;
+            border: 1px solid #b0cfe9;
+            border-radius: 4px;
+        }
+        input:focus{
+            color: #b0cfe9;
+        }
+        input:focus::placeholder{
+            opacity: 0;
+        }
+
+        .btn-box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            margin: 0 7px;
+            line-height: 30px;
+            border-radius: 4px;
+            border: none;
+            background-color: #69b3f0;
+            color: white;
+
+        }
+        button:hover{
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        .btn-box p{
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .btn-box p:hover{
+            cursor: pointer;
+            color: #1c70b5;
+            /* border-bottom: 1px solid white; */
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="box">
+        <div class="pre-box">
+            <h1>WELCOME</h1>
+            <p>JOIN US</p>
+            <div class="img-box">
+                <img src="image/flower1.png" alt="">
+            </div>
+        </div>
+        <!--登录部分-->
+        <div class="login-form">
+            <div class="title-box">
+                <h1>登录</h1>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+            </div>
+            <div class="btn-box">
+                <button>登录</button>
+                <p onclick="mySwitch()">没有账号？去注册</p>
+            </div>
+        </div>
+
+        <!--注册部分-->
+        <div class="register-form">
+            <div class="title-box">
+                <h1>注册</h1>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+                <input type="password" placeholder="确认密码">
+            </div>
+            <div class="btn-box">
+                <button>注册</button>
+                <p onclick="mySwitch()">已有帐号？去登录</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        let flag=true;
+        let prebox = document.querySelector(".pre-box")
+        let img = document.querySelector("img")
+        const mySwitch=()=>{
+            if(flag){
+                prebox.style.transform="translateX(-100%)"
+                prebox.style.backgroundColor="rgb(162,176,233)"
+                img.src="image/flower2.png"
+            }else{
+                prebox.style.transform="translateX(0%)"
+                prebox.style.backgroundColor="rgb(88, 116, 230)"
+                img.src="image/flower1.png"
+            }
+            flag=!flag
+        }
+    </script>
 </body>
+
 </html>
