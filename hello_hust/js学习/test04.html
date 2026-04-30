@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //代码块{}  分组 
+        /*
+        使用得{}来创建代码块，代码块可以用来对代码进行分组，
+        同一个代码中的代码，就是同一组代码，一个代码块中的代码要么都执行要么都不执行
+        
+        let和 var
+            -在JS中，使用let声明的变量具有块作用域
+            在代码块中声明的变量无法在代码块的外部访问
+            -使用var声明的变量，不具有块作用域I
+
+        */
+
+        {
+            let a = 10
+            // alert(123)
+        }
+        {
+            let b = 10
+            // alert("hahaha")
+        }
+
+
+        /*
+        执行流程
+        if语句在执行会先对if后的条件表达式进行求值判断，
+            如果结果为true，则执行if后的语句
+            如果为false则不执行
+        if语句只会控制紧随其后其后的那一行代码，如果希望可以控制多行代码，可以使用{}将语句扩起来
+        最佳实践:即使if后只有1行代码，我们也应该编写代码块，这样结构会更加的清晰
+        如果if后的添加表达式不是布尔值，会转换为布尔值然后再运算
+
+        */
+        if (false)
+            alert('ahhaah')
+
+        let a = 20;
+
+        if (a > 10) {
+            alert('a比10大')
+            alert(11111)
+        }
+        if (100) {
+            alert(100)
+        }
+
+        let age = 70;
+
+        if (age >= 100) {
+            alert("您是一个长寿的人");
+        } else if (age >= 60) {
+            alert("您已经退休了");
+        } else {
+            alert("您还没有退休");
+        }
+
+        //---------练习--------
+        //用户输入一个属，判断奇数偶数
+        //prompt返回的是字符串类型
+        let num = +prompt("请输入一个整数：");
+        num = +num;
+
+        //检查输入是否合法
+        //不能用==或===检验NaN
+        if (isNaN(num)||num%1!==0) {
+            alert("你的输入有问题,请输入整数");
+        } else {
+            if (num % 2 == 0) {
+                alert(`${num}这是一个偶数`);
+            } else {
+                alert(`${num}这是一个奇数`);
+            }
+        }
+
+
+
+        /*
+        switch语句
+        switch语句
+        语法:
+        switch(表达式){
+            case表达式:代码...
+            case表达式:代码...
+            case表达式:代码...
+            case表达式:代码...
+        -执行的流程
+        switch语句在执行时，会依次将switch后的表达式和case后的表单式进行全等比较
+        如果比较结果为true，则自当前case处开始执行代码
+        如果比较结果为false，则继续比较其他case后的表达式，直到找到true为止
+
+        */
+       num = +prompt("请输入一个整数：");
+       num=num%3;
+       switch(num){
+            case 0:
+                alert("0");
+                break;
+            case 1:
+                alert("1");
+                break;
+            case 2:
+                alert("2");
+                break;
+            default:
+                alert("无");
+                break;
+       }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
