@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //类型转换
+        //1、转换为字符串
+
+        let a=10;
+        a=true;
+        a=11n
+        // a=undefined
+
+        console.log(typeof a,a)
+        a=a.toString();
+        console.log(typeof a,a) 
+
+        let b=33
+        b=null
+        b=undefined
+        console.log(typeof b,b)
+        b=String(b)
+        console.log(typeof b,b)
+
+
+        //2、转换为数字
+        let c='123'
+        c='asd'//NaN
+        c='3.1132'
+        c='2213aaa'//NaN
+        c=''//0
+        c='  '//0
+        c=true//1
+        c=false//0
+        c=null//0
+        c=undefined//NaN
+        console.log(typeof c,c)
+        c=Number(c)
+        console.log(typeof c,c)
+
+        /*
+        parseInt()将一个字符串转换为一个整数
+        parseFloat()将一个字符串转换为一个浮点数
+        */
+        let d='123px'
+        d='a123'
+        console.log(typeof d,d)
+        d= parseInt(d)
+        console.log(typeof d,d)
+
+        let e='3.1234aaa'
+        console.log(typeof e,e)
+        e=parseFloat(e)
+        console.log(typeof e,e)
+
+        //3、转换为boolean
+        let f=1
+        f=-1//true
+        f=NaN
+        f=Infinity//true
+        f=undefined//flase
+        console.log(typeof f,f)
+        f=Boolean(f)
+        console.log(typeof f,f)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

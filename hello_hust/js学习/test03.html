@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //运算符
+        //算术运算符
+        let a=1+1
+
+        //自动类型转换
+        a = 10-'5'
+        a = 10+true
+        a=5+null
+        a=6-undefined//NaN
+
+        //当一个值和字符串加法运算，会将其他值转换为字符串，做拼串操作
+        a=1+'2'//12
+        //也可以通过和空串拼接来实现类型转换为字符串
+        console.log(a)
+
+        a??=101//赋值失败
+        a=null
+        a??=101
+        console.log(a)
+
+
+        //一元的+-
+        let b=-10
+        console.log(typeof b,b)
+        b=-b
+        console.log(typeof b,b)
+
+        //自增 自减
+        let n=5
+        n=n++ + ++n +n//19
+        console.log(n)
+
+        b='123'
+        console.log(typeof b,b)
+        //可以用来变量类型转换
+        b=+b
+        console.log(typeof b,b)
+
+        //逻辑运算符
+        let c=true&&true&&3
+        console.log(c)
+
+        let d=0||NaN||undefined
+        console.log(d)
+
+        //关系运算符
+        let e=10>5
+        e=5>=5
+        e="abc">"b"//两个都是字符串，根据unicode编码比较
+        e = +"12" < +"2"//转换为数字,false
+        e = 5<"13"//有一个是非数值 比较，转换为数值
+        console.log(e)
+
+        //相等运算符==
+        let f=1==1
+        f=1=='1'
+        f= true=='1'
+        f= null==undefined//true
+        f= NaN==NaN//flase NaN不和任何值相等
+        console.log(f)
+
+        //全等运算符===
+        let g = 1==='1'//false不会进行类型转换
+        console.log(g)
+
+        //!=
+        let h = 1!='a'
+        console.log(h)
+
+        //!===
+        let i = 1!=='a'
+        console.log(i)
+
+        //条件运算符
+        a=100
+        b=20
+        console.log(a>b?a:b)
+
+
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

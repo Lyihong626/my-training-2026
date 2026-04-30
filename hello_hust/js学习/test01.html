@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--script编写位置：1指定标签内-->
+    <script>
+        //三种输出方式
+        alert("输出1");
+        console.log("输出2");
+        document.write("输出3");
+
+        //两种变量声明方式let   var
+        let a = 80;
+        console.log(a);
+        a = 99
+        console.log(a);
+
+        // 标识符：
+        // *1．标识符只能含有字母、数字、下划线、$，且不能以数字开头
+        // *2．标识符不能是JS中的关键字和保留字，也不建议使用内置的函数或类名作为变量名3．命名规范:
+        //     -通常会使用驼峰命名法
+        //     -首字母小写，每个单词开头大写
+        //         maxlength --> maxLength
+        //         borderleftwidth-- > borderLeftWidth
+        //     - 类名会使用大驼峰命名法
+        //     - 首字母大写,每个单词开头大写 
+        //     - maxlength-- > MaxLength
+        //         - 常量的字母会全部大写
+        //         - MAX_LENGTH
+
+        //typeof检查的不是变量类型，而是值的类型，根据不同的值返回不同结果
+        let b=10n
+        console.log(typeof a)
+        console.log(typeof b)
+        let c='hello \"world\"'
+        console.log(c)
+        let d=`111  ${c}
+        222
+        333`
+        console.log(d)
+        let e=true
+        console.log(e)
+        let f
+        console.log(f)
+        let g=null
+        console.log(g)
+
+    </script>
+    <!--script编写位置：2引入外部js文件
+    <script src=""></script>
+    -->
+</head>
+
+<body>
+    <!--script编写位置：3编写到指定属性内-->
+    <button onclick="alert('点击')">按钮</button>
+    <hr>
+    <a href="javascript:alert(123);">点击</a>
+</body>
+
+</html>
