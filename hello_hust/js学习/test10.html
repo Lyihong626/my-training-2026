@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        "use strict"
+        class Person {
+            name = "孙悟空";
+            age = 18;
+            gender;
+
+            constructor() {
+                this.gender = "男";
+            }
+
+            sayHello() {
+                console.log("hello，我是",this.name);
+            }
+        }
+
+        const p = new Person();
+        console.log(p);
+        /*
+            访问一个对象的原型对象
+                对象.__proto__
+        */
+        // console.log(p.__proto__);
+        console.log(Object.getPrototypeOf(p)===p.__proto__);
+
+        console.log(p.__proto__);
+        console.log(p.__proto__.__proto__);
+        console.log(p.constructor);
+        
+        Person.prototype.sayHello=()=>{
+            console.log("大家好");
+        }
+        console.log(p.sayHello());
+
+        
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

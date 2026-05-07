@@ -109,6 +109,7 @@
             margin-bottom: 4px;
             border: 1px solid #b0cfe9;
             border-radius: 4px;
+            padding-left: 10px;
         }
         input:focus{
             color: #b0cfe9;
@@ -169,6 +170,7 @@
             <div class="title-box">
                 <h1>登录</h1>
             </div>
+            <form>
             <div class="input-box">
                 <input type="text" id="username" placeholder="用户名">
                 <input type="password" id="password" placeholder="密码">
@@ -177,22 +179,26 @@
                 <button onclick="login()">登录</button>
                 <p onclick="mySwitch()">没有账号？去注册</p>
             </div>
+            </form>
         </div>
 
         <!--注册部分-->
         <div class="register-form">
+            
             <div class="title-box">
                 <h1>注册</h1>
             </div>
+            <form>
             <div class="input-box">
-                <input type="text" placeholder="用户名">
-                <input type="password" placeholder="密码">
-                <input type="password" placeholder="确认密码">
+                <input type="text" id="username1" placeholder="用户名">
+                <input type="password" id="password1" placeholder="密码">
+                <input type="password" id="password2" placeholder="确认密码">
             </div>
             <div class="btn-box">
-                <button>注册</button>
+                <button onclick="register()">注册</button>
                 <p onclick="mySwitch()">已有帐号？去登录</p>
             </div>
+            </form>
         </div>
 
     </div>
@@ -202,6 +208,7 @@
         let img = document.querySelector("img")
         const mySwitch=()=>{
             if(flag){
+                //水平移动，向左移pre-box的宽度
                 prebox.style.transform="translateX(-100%)"
                 prebox.style.backgroundColor="rgb(162,176,233)"
                 img.src="image/flower2.png"
@@ -210,8 +217,55 @@
                 prebox.style.backgroundColor="rgb(88, 116, 230)"
                 img.src="image/flower1.png"
             }
+            //注意：这个地方要更改flag，以便于下次更换移动方向
             flag=!flag
         }
+
+
+        
+
+        //==================================================================
+
+        const storageKey = "userAccounts";//用于存储所有用户信息
+        //工具函数
+
+        //获取全部用户信息
+        function getAllUsers(){
+            const raw = localStorage.getItem(storageKey);
+            //如果没有数据，返回空对象
+            if(!raw){
+                return {};
+            }
+            try{
+                const users = JSON.parse(raw);
+                //确保返回的是对象
+                if(typeof users ==="object"){
+                    return users;
+                }
+                return {};
+            }catch(e){
+                console.log("JSON解析失败",e);
+                return {};
+            }
+        }
+
+        //保存用户信息
+        function saveAllUsers(usersdObj){
+            localStorage.setItem(storageKey,JSON.stringify(usersdObj));
+        }
+
+        //检查账号是否已存在
+        function isUsernameExist(username){
+            const users = getAllUsers();
+            return users.hasOwnProperty(username);
+        }
+
+        //===================================================================
+
+
+
+
+        //登录函数
         function login(){
             //没有加.value，拿到的是DOM对象
             //加上.value拿到的是字符串数据
@@ -219,7 +273,38 @@
             const password = document.getElementById("password").value;
             console.log("用户名："+username);
             console.log("密码："+password);
-            //简单判断
+
+            //登录验证
+            //格式检查
+            if(!username||username.trim()===""){
+                alert("账号不能为空！");
+                return false;
+            }
+            if(!password||password.trim()===""){
+                alert("密码不能为空！");
+                return false;
+            }
+
+            const users = getAllUsers();
+            if(!users.hasOwnProperty(username)){
+                alert("账号不存在！");
+                return flase;
+            }
+            if(users[username]!==password){
+                alert("密码错误！");
+                return false;
+            }
+
+            //登录成功,跳转
+            localStorage.setItem('currentUser',username);
+            alert("登录成功！");
+            window.open('main_page.html','_blank');
+
+
+
+
+            
+            /*
             if(username=='admin'&&password=='123456'){
                 //两种页面跳转方式
                 // window.location.href='main_page.html';
@@ -227,7 +312,60 @@
             }else{
                 alert("用户名或密码错误!");
             }
+            */
         }
+
+
+
+        //注册新用户
+        function register(){
+
+            const username1 = document.getElementById("username1").value;
+            const password1 = document.getElementById("password1").value;
+            const password2 = document.getElementById("password2").value;
+            
+            console.log("用户名1："+username1);
+            console.log("密码1："+password1);
+            console.log("密码2："+password2);
+
+            //格式检查
+            if(!username1||username1.trim()===""){
+                alert("账号不能为空！");
+                return false;
+            }
+            if(!password1||password1.trim()===""){
+                alert("密码不能为空！");
+                return false;
+            }
+            if(!password2||password2.trim()===""){
+                alert("密码不能为空！");
+                return false;
+            }
+            if(password1!=password2){
+                alert("密码不一致！");
+                return false;
+            }
+
+            //重复检查
+            if(isUsernameExist(username1)){
+                alert("该账号已存在！")
+                return false;
+            }
+
+            //存储用户
+            const users = getAllUsers();
+            users[username1]=password1;
+            saveAllUsers(users);
+
+            alert("注册成功!");
+
+            //自动清空注册表单
+            document.getElementById("username1").value="";
+            document.getElementById("password1").value="";
+            document.getElementById("password2").value="";
+
+        }
+
     </script>
 </body>
 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //对象
+
+        let obj = new Object();
+
+        obj.name="孙悟空";
+        obj.age=18;
+        obj.gender="男"
+
+        obj.name="TOM sun";
+
+        // delete obj.name;
+
+        console.log(obj);
+
+        obj["gender"]="male";
+        let str = "address";
+        obj[str]="花果山"
+        console.log(obj[str]);
+
+        let newSymble = Symbol();
+        obj.newSymble='hahahahha'
+        console.log(obj["newSymble"]);
+        console.log(obj.newSymble);
+        console.log(obj["name"]);
+
+        obj.a=Object();
+        obj.a.name="猪八戒";
+        obj.a.age=28;
+        console.log(obj.a.name);
+        //检查对象中是否含有某个属性
+        console.log("gender" in obj)
+
+        let Mysymbol = Symbol();
+        let obj2 = {
+            name:"孙悟空",
+            age:18,
+            ["gender"]:"male",
+            [Mysymbol]:"特殊的属性"
+        }
+        console.log(obj2);
+
+        console.log("==========");
+
+        //枚举  for-in
+        //符号添加的属性不可枚举
+        for(let p in obj2){
+            console.log(p,obj2[p]);
+        }
+
+        //可变类型
+        let obj3={
+            name:"孙悟空",
+            age:18,
+            gender:"男"
+        }
+
+        let obj4=obj3;
+
+        console.log(obj3);
+        console.log(obj4);
+
+        obj3.name="猪八戒"
+
+        console.log(obj3);
+        console.log(obj4);
+
+        //注意变量与对象的区别
+
+        obj4={};//此处修改变量
+        obj4.name="孙悟空";//修改对象      
+        console.log(obj3);
+        console.log(obj4);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

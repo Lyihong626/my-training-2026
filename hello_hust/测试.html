@@ -55,6 +55,22 @@
         .menu_item:hover>ul {
             display: block;
         }
+
+        /* 表单整体居中 */
+        form {
+            width: 400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            /* label固定宽，input占满剩余 */
+            gap: 16px;
+            align-items: center;
+        }
+
+        label {
+            text-align: right;
+            padding-right: 12px;
+        }
     </style>
 </head>
 
@@ -66,6 +82,24 @@
             <li><a href="#">中等长度文字</a></li>
             <li><a href="#">特别特别特别特别长的文字示例</a></li>
         </ul>
+    </div>
+    <div>
+
+
+        <form>
+            <label for="username">用户名：</label>
+            <input type="text" id="username" name="username">
+
+            <label for="email">邮箱：</label>
+            <input type="email" id="email" name="email">
+
+            <label for="age">年龄：</label>
+            <input type="number" id="age" name="age">
+
+            <div></div> <!-- 占位，让按钮跨列或单独处理 -->
+            <button type="submit">登录</button>
+        </form>
+
     </div>
 </body>
 

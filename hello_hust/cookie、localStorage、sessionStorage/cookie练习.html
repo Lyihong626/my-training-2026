@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        h2 {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        form {
+            width: 250px;
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 10px 12px;
+            padding: 10px 0;
+        }
+
+        .box {
+            width: 250px;
+            background-color: rgb(228, 247, 195);
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        label {
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            padding-left: 8px;
+        }
+
+        .remBox {
+            grid-column: 2/3;
+            /* 从第二列开始，占满输入框区域 */
+            justify-self: start;
+            display: flex;
+            align-items: center;
+        }
+
+        #remenberMe {
+            width: 16px;
+        }
+
+        #remenberTitle {
+            text-align: left;
+        }
+
+        .button-wapper {
+            /* background-color: aliceblue; */
+            grid-column: 1/3;
+            text-align: center;
+        }
+
+        #submit {
+            border-radius: 5px;
+            border: 1px black solid;
+            width: 50px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>cookie登录</h2>
+        <form>
+
+            <label>用户名</label>
+            <input type="username">
+            <label>密码</label>
+            <input type="password">
+            <div class="remBox">
+                <input type="checkbox" id="remenberMe">
+                <label for="remenberMe" id="remenberTitle">记住我</label>
+
+            </div>
+            <div class="button-wapper">
+                <input type="submit" value="登录" id="submit">
+            </div>
+
+
+        </form>
+    </div>
+    <script>
+        const username = document.querySelector('input[type="username"]');
+        // const password = document.querySelector('input[type="password"]');
+        const checkbox = document.querySelector('input[type="checkbox"]');
+        const submit = document.querySelector('input[type="submit"]');
+        let array = document.cookie
+            .split(';')
+            .map(cookie=>cookie.trim().split('='));
+        console.log(array);
+        let cookie={};
+        for(let i=0;i<array.length;i++){
+            let name = array[i][0];
+            let value = array[i][1];
+            cookie[name] = decodeURIComponent(value);
+        }
+        //自动写入cookie里面的值
+        if(document.cookie){
+            username.value = cookie.yourname;
+            checkbox.checked = true;
+        }
+
+        submit.addEventListener('click', e => {
+            if (checkbox.checked && username.value != '') {
+                let key = 'yourname';
+                let value = encodeURIComponent(username.value);
+                let twoDays = 2 * 24 * 60 * 60;
+                document.cookie = `${key}=${value};max-age=${twoDays}`;
+            }
+            e.preventDefault();
+            alert("登录成功！");
+        })
+
+    </script>
+
+</body>
+
+</html>

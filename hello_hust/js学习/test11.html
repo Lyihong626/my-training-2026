@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        instanceof
+        */
+       class Animal{}
+       class Dog extends Animal{
+            name = "花花";
+            age = 10;
+            sayHello(){
+                console.log("hello");
+            }
+       }
+
+       const a = new Dog();
+       console.log(a instanceof Animal);
+       console.log(a instanceof Object);
+
+       //in
+       //hasOwnProperty
+
+       console.log("sayHello" in a);
+       console.log(a.hasOwnProperty("sayHello"));
+       console.log(a.__proto__.hasOwnProperty("sayHello"));
+
+       console.log(Object.hasOwn(a,"sayHello"));
+
+    </script> 
+</head>
+<body>
+    
+</body>
+</html>

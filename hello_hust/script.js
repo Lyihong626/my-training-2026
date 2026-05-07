@@ -188,5 +188,11 @@ window.onload = function startSlideShow() {
     })
 
 
+    //显示当前登录用户信息
+    // 获取当前登录的用户
+    const currentUser = localStorage.getItem('currentUser');
+    document.querySelector('.currentUser h2').innerHTML=`欢迎你<br>${currentUser}`;
+
+
 }
 
