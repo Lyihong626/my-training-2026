@@ -45,18 +45,22 @@
         const button = document.querySelector('button');
         const history = document.querySelector('.history');
 
+        //循环获取localStorage里面的值
+        //并展示出来
         if(localStorage.length>0){
             for(let i=0;i<localStorage.length;i++){
-                let key = localStorage.key(i);
+                let key = localStorage.key(i);//获取第i条数据的键名
 
-                let li = document.createElement('li');
-                let liText = document.createTextNode(localStorage.getItem(key));
-                li.appendChild(liText);
+                let li = document.createElement('li');//在内存中创建一个 <li> 标签
+                let liText = document.createTextNode(localStorage.getItem(key));//根据键名获取存储的值，并且把文本转换成文本节点
+                li.appendChild(liText);//把文本节点添加到 li 元素内部
                 history.appendChild(li);
 
+                //创建 <span></span> 用来放 X 删除按钮
                 let close = document.createElement('span');
                 close.textContent='✕';
                 li.append(close);
+                //点击 X 后，数据会从 localStorage 和页面中同时删除
                 close.addEventListener('click',()=>{
                     localStorage.removeItem(key);
                     li.parentNode.removeChild(li);
@@ -64,8 +68,10 @@
             }
         }
 
+        //向localStorage里面添加新的搜素记录
         button.addEventListener('click',()=>{
             if(input.value){
+                //生成唯一的时间戳作为键名，保证每次存储的键名都是独一无二的，不会互相覆盖
                 let key = new Date().valueOf();
                 let value = input.value;
                 localStorage.setItem(key,value);

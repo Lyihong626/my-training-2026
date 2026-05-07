@@ -226,7 +226,7 @@
 
         //==================================================================
 
-        const storageKey = "userAccounts";//用于存储所有用户信息
+        const storageKey = "userAccounts";//用于存储所有用户信息，存储的键名
         //工具函数
 
         //获取全部用户信息
@@ -237,8 +237,9 @@
                 return {};
             }
             try{
-                const users = JSON.parse(raw);
+                const users = JSON.parse(raw);//把 JSON 字符串转成 JavaScript 对象
                 //确保返回的是对象
+                //尝试执行里面的代码，如果出错就跳到 catch
                 if(typeof users ==="object"){
                     return users;
                 }
@@ -251,7 +252,7 @@
 
         //保存用户信息
         function saveAllUsers(usersdObj){
-            localStorage.setItem(storageKey,JSON.stringify(usersdObj));
+            localStorage.setItem(storageKey,JSON.stringify(usersdObj));//把对象转成 JSON 字符串
         }
 
         //检查账号是否已存在

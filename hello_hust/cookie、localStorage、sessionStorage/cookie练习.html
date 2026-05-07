@@ -89,7 +89,7 @@
         <form>
 
             <label>用户名</label>
-            <input type="username">
+            <input type="text">
             <label>密码</label>
             <input type="password">
             <div class="remBox">
@@ -105,26 +105,31 @@
         </form>
     </div>
     <script>
-        const username = document.querySelector('input[type="username"]');
+        const username = document.querySelector('input[type="text"]');
         // const password = document.querySelector('input[type="password"]');
         const checkbox = document.querySelector('input[type="checkbox"]');
         const submit = document.querySelector('input[type="submit"]');
+        //按分号分割
+        //trim() 去掉空格
+        // split('=') 按等号分割 
         let array = document.cookie
             .split(';')
             .map(cookie=>cookie.trim().split('='));
         console.log(array);
+        //将cookie转成对象
         let cookie={};
         for(let i=0;i<array.length;i++){
             let name = array[i][0];
             let value = array[i][1];
-            cookie[name] = decodeURIComponent(value);
+            cookie[name] = decodeURIComponent(value);//把编码的中文解码
         }
-        //自动写入cookie里面的值
+        //如果cookie里面有值，自动写入cookie里面的值
         if(document.cookie){
             username.value = cookie.yourname;
             checkbox.checked = true;
         }
 
+        //登录时候，保存cookie
         submit.addEventListener('click', e => {
             if (checkbox.checked && username.value != '') {
                 let key = 'yourname';
@@ -132,7 +137,7 @@
                 let twoDays = 2 * 24 * 60 * 60;
                 document.cookie = `${key}=${value};max-age=${twoDays}`;
             }
-            e.preventDefault();
+            e.preventDefault();//阻止表单提交刷新页面
             alert("登录成功！");
         })
 

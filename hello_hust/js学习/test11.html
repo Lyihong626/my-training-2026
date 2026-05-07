@@ -18,17 +18,17 @@
        }
 
        const a = new Dog();
-       console.log(a instanceof Animal);
-       console.log(a instanceof Object);
+       console.log(a instanceof Animal);//true
+       console.log(a instanceof Object);//Object是所有对象的原型，所以任何和对象和Object进行instanceof运算都会返回true
 
        //in
        //hasOwnProperty
 
-       console.log("sayHello" in a);
-       console.log(a.hasOwnProperty("sayHello"));
-       console.log(a.__proto__.hasOwnProperty("sayHello"));
+       console.log("sayHello" in a);//true
+       console.log(a.hasOwnProperty("sayHello"));//flase
+       console.log(a.__proto__.hasOwnProperty("sayHello"));//Dog有sayHello   true
 
-       console.log(Object.hasOwn(a,"sayHello"));
+       console.log(Object.hasOwn(a,"sayHello"));//flase
 
     </script> 
 </head>
