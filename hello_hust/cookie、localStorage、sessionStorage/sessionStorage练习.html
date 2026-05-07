@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 800px;
+            background-color: rgb(210, 245, 183);
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            /* background-color: chartreuse; */
+            margin: 10px 0;
+        }
+        span{
+            margin-left: 10px;
+            border: 1px solid black;
+            cursor: pointer;
+            font-weight: bolder;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>搜索</h1>
+        <input type="text">
+        <button>搜索</button>
+        <div>
+            <h2>搜索记录</h2>
+            <ul class="history"></ul>
+        </div>
+
+    </div>
+    <script>
+        //仅在当前窗口有效
+        //将localStorage全部替换为sessionStorage
+
+        //Live Server 会在你通过它打开页面时，自动写入这个字段到 sessionStorage，
+        // 用来判断：这是用户第一次用 Live Server 打开这个页面
+        const input = document.querySelector('input[type="text"]');
+        const button = document.querySelector('button');
+        const history = document.querySelector('.history');
+
+        if(sessionStorage.length>0){
+            for(let i=0;i<sessionStorage.length;i++){
+                let key = sessionStorage.key(i);
+
+                let li = document.createElement('li');
+                let liText = document.createTextNode(sessionStorage.getItem(key));
+                li.appendChild(liText);
+                history.appendChild(li);
+
+                let close = document.createElement('span');
+                close.textContent='✕';
+                li.append(close);
+                close.addEventListener('click',()=>{
+                    sessionStorage.removeItem(key);
+                    li.parentNode.removeChild(li);
+                });
+            }
+        }
+
+        button.addEventListener('click',()=>{
+            if(input.value){
+                let key = new Date().valueOf();
+                let value = input.value;
+                sessionStorage.setItem(key,value);
+                input.value = '';
+
+                let li = document.createElement('li');
+                let liText = document.createTextNode(sessionStorage.getItem(key));
+                li.appendChild(liText);
+                history.appendChild(li);
+
+                //删除
+                let close = document.createElement('span');
+                close.textContent='✕';
+                li.append(close);
+                close.addEventListener('click',()=>{
+                    sessionStorage.removeItem(key);
+                    li.parentNode.removeChild(li);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

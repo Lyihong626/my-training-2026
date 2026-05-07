@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //方法
+        
+
+        let obj = {};
+        obj.name="孙悟空";
+        obj.age=18;
+
+        //对象的属性也可以是一个函数
+        obj.sayHello = function(){
+            alert("hello");
+        }
+        console.log(obj);
+        // obj.sayHello();
+
+        /*
+        window对象
+            -在浏览器中，浏览器为我们提供了一个window对象，可以直接访问
+            window对象代表的是浏览器窗口，通过该对象可以对浏览器窗口进行各种操作
+            除此之外window对象还负责存储JS中的内置对象和浏览器的宿主对象
+            - window对象的属性可以通过window对象访问,也可以直接访问
+            -函数就可以认为是window对象的方法
+
+        */
+
+        var b=20;
+        function fn(){
+            alert("我是fn");
+        }
+
+        // window.fn();
+
+        let c=34;
+        window.c=33;
+        console.log(c);
+        
+        console.log(window.c);
+        
+        /*
+        变量的提升
+            -使用var声明的变量，它会在所有代码执行前被声明
+            所以我们可以在变量声明前就访问变量
+        函数的提升
+            -使用函数声明创建的函数，会在其他代码执行前被创建
+            所以我们可以在函数声明前调用函数
+
+        */
+
+        console.log(x);
+
+        var x=10;
+
+        console.log(x);
+
+        fn2();
+        //console.log(d);//禁止访问
+        
+
+        function fn2(){
+            alert("hello");
+        }
+
+        let d=2;
+
+
+        //立即执行函数，匿名函数
+        (function(){
+            let a=10;
+            console.log(a);
+        }());
+
+        (function(){
+            let a=20;
+            console.log(a);
+        })();
+
+
+        //this练习
+        function fn4(){
+            console.log("fn打印",this);
+        }
+        const obj3 = {name:"孙悟空"};
+        obj3.test=fn4;
+        
+        const obj2 = {
+            name:"猪八戒",
+            test:fn4
+        }
+
+        fn4();
+        window.fn4;
+        obj3.test();
+        obj2.test();
+
+        const obj4={
+            name:"唐僧",
+            sayHello:function(){
+                console.log(this.name);
+            }
+        }
+        obj4.sayHello();
+
+        /*
+        箭头函数的this
+        */
+        const fn5=()=>{
+            console.log("fn2=>",this);
+        }
+        fn5();
+
+        function fn6(){
+            console.log("fn6=>",this);//总是window
+        }
+        fn6();
+
+        "use strict"
+        const obj6={
+            name:"孙悟空",
+            fn5,//等价于fn5:fn
+            fn6,
+            sayHello(){
+                console.log(this.name);
+
+                // function t(){
+                //     console.log(this);
+                // }
+                // t();
+
+                const fn=()=>{
+                    "use strict"
+                    console.log(this);
+                }
+                fn();
+
+
+            }
+        }
+        obj6.sayHello();
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

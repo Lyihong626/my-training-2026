@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        span{
+            width: 100px;
+            display: inline-block;
+        }
+    </style>
     <script>
         /*
         循环语句
@@ -62,9 +68,42 @@
             -初始化表达式，在循环的整个的生命周期中只会执行1次- for循环中的三个表达式都可以省略
 
         */
-       for(let i=0;i<5;i++){
-            console.log(i);
-       }
+    //    for(let i=0;i<5;i++){
+    //         console.log(i);
+    //    }
+    
+    for(let i=1;i<=9;i++){
+        for(let j=1;j<i+1;j++){
+            document.write(`<span>${j}*${i}=${i*j}</span>`);
+        }
+        document.write("<br>");
+    }
+    document.write("============================");
+
+    //break和continue
+    
+    //开始一个计时器
+    console.time('质数练习');
+
+    //求100以内所有质数
+    for(let i=2;i<10000;i++){
+        let flag=true;
+        for(let j=2;j<i**.5;j++){
+            if(i%j==0){
+                flag=false;
+                break;
+            }
+        }
+        if(flag){
+            // console.log(i);
+        }
+    }
+
+    console.timeEnd('质数练习');
+
+    
+
+
 
 
 
