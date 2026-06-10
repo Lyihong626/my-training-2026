@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Map
+
+        const obj2={};
+
+        const obj={
+            "name":"孙悟空",
+            "age":18,
+            [Symbol()]:"哈哈",
+            [obj2]:"嘻嘻"
+        }
+
+        console.log(obj);
+
+        //创建map
+        /*
+        属性和方法:
+        map.size()获取map中键值对的数量
+        map. set(key,value)向map中添加键值对
+        map.get(key）根据key获取值
+        map.delete(key）删除指定数据
+        map.has(key)）检查map中是否包含指定键
+        map. clear()删除全部的键值对
+
+        */
+        const map = new Map();
+        map.set("name","孙悟空");
+        map.set("age",18);
+
+        console.log(map);
+
+        console.log(map.get("name"));
+        map.delete("age");
+        console.log(map);
+        //将map转换为数组
+        const arr = Array.from(map);
+        console.log(arr);
+
+        const map2 = new Map([["name","aaa"],["age",8],["Address","where"]]);
+        console.log(map2);
+        //遍历map
+        for(const[key,value] of map2){
+            console.log(key,value);
+        }
+
+        map2.forEach((key,value)=>{
+            console.log(key,value)
+        })
+
+        for(const key of map2.keys()){
+            console.log(key);
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

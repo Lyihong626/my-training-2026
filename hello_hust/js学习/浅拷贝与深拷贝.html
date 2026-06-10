@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浅拷贝与深拷贝</title>
+</head>
+<body>
+    <script>
+        let a = [1,2,3,[3,4]];
+        let b = [...a]; //浅拷贝
+        a[3][1] = 100;
+        console.log(b); // [1,2,3,[3,100]]
+
+        //通过json格式转换来实现深拷贝,缺点：无法实现函数的拷贝
+        let c = JSON.parse(JSON.stringify(a));
+        a[3][1] = 200;
+        console.log(c); // [1,2,3,[3,100]]
+
+        //对函数的拷贝,可以用展开运算符拷贝
+        let obj = {
+            name: "张三",
+            fn(){
+                console.log("hi");
+            }
+        }
+        let obj2 = JSON.parse(JSON.stringify(obj));
+        console.log(obj2); // {name: "张三"}没有拷贝函数
+
+        let obj3 = {...obj}; //展开复制
+
+        //因为修改方式不一样，修改函数的方式实质上等于重新一个函数，开辟新的空间
+        obj.fn = function(){
+            console.log("hello");
+        }
+        obj.fn(); // hello
+        obj3.fn(); // hi
+
+
+        //递归拷贝
+        function deepClone(obj){
+            if(typeof obj !== "object" || obj === null){
+                return obj;
+            }
+            let newObj = Array.isArray(obj) ? [] : {};
+            for(let key in obj){
+                //判断这个属性或方法是否是对象本身的
+                if(obj.hasOwnProperty(key)){
+                    newObj[key] = deepClone(obj[key]);
+                }
+            }
+            return newObj;
+        }
+
+        let newObj = {
+            name: "李四",
+            age: 20,
+            fn(){
+                console.log("hi");
+            },
+            arr: [1,2,3,[4,5]]
+        }
+
+        newObj2 = deepClone(newObj);
+        console.log(newObj2);
+
+        newObj.arr[3][1] = 100;
+        console.log(newObj2); 
+
+        newObj.fn = function(){
+            console.log("hello");
+        }
+        newObj.fn(); // hello
+        newObj2.fn(); // hi
+
+    </script>
+</body>
+</html>

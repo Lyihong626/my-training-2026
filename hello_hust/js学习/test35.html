@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            border: 10px yellow solid;
+        }
+        #box2{
+            width: 100px;
+            height: 200px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+    <d id="tz" href="https://www.bilibili.com/">链接</d>
+    <script>
+        /*
+        event事件
+        事件对象
+        事件对象是有浏览器在事件触发时所创建的对象，
+            这个对象中封装了事件相关的各种信息
+        通过事件对象可以获取到事件的详细信息
+            比如:鼠标的坐标、键盘的按键..
+        浏览器在创建事件对象后，会将事件对象作为响应函数的参数传递，
+            所以我们可以在事件的回调函数中定义一个形参来接收事件对象
+
+        */ 
+        // box1.onmousemove = function(){
+        //     console.log("鼠标动力");
+        // }
+        /*
+        在DOM中存在着多种不同类型的事件对象
+            -多种事件对象有一个共同的祖先 Event
+                event.target触发事件的对象
+                event.currentTarget绑定事件的对象（(同this)
+                event.stopPropagation()停止事件的传到
+                event.preventDefault()取消默认行为
+
+            事件的冒泡(bubble)
+                事件的冒泡就是指事件的向上传到
+                当元素上的某个事件被触发后，其祖先元素上的相同事件也会同时被触发
+                -冒泡的存在大大的简化了代码的编写，但是在一些场景下我们并不希望冒泡存在
+                    不希望事件冒泡时，可以通过事件对象来取消冒泡
+
+
+        */
+        const box1=document.getElementById("box1");
+        const box2=document.getElementById("box2");
+        const tz = document.getElementById("tz");
+        tz.addEventListener("click",(event)=>{
+            event.preventDefault()//取消默认行为
+            alert("点击");
+        })
+        // box1.addEventListener("mousemove",event=>{
+        //     console.log(event.clientX,event.clientY);
+        // })
+        box1.addEventListener("click",event=>{
+            /*
+            在事件的响应函数中:
+            event.target表示的是触发事件的对象
+            this绑定事件的对象    
+
+            */
+            // console.log(event.target);
+            // console.log(this);
+            alert("我是box1");
+        })
+        box2.addEventListener("click",function(event){
+            event.stopPropagation();//取消时间的传导
+            alert("我是box2");
+        })
+    </script>
+</body>
+</html>

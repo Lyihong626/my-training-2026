@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点我一下</button>
+    <span class="s1">我是span</span>
+    <span class="s1">我是span</span>
+    <span class="s1">我是span</span>
+    <span class="s1">我是span</span>
+    <span class="s1">我是span</span>
+    <div>我是div</div>
+    <div>我是div</div>
+    <div>我是div</div>
+    <div>我是div</div>
+    <div>我是div</div>
+    <input type="text" name="input">
+    
+    <script>
+        //DOM
+        const btn = document.getElementById("btn");
+        btn.innerText="CLICK ME";
+        const spans = document.getElementsByClassName("s1");
+        for(let i=0;i<spans.length;i++){
+            spans[i].innerText="哈哈哈"+i;
+        }
+        const divs = document.getElementsByTagName("div");
+        for(let i=0;i<divs.length;i++){
+            divs[i].innerText="嘻嘻嘻"+i;
+        }
+        const input = document.getElementsByName("input");
+
+        const divs2 = document.querySelectorAll("div");
+        console.log(divs2);
+
+        
+
+
+    </script>
+    
+</body>
+</html>

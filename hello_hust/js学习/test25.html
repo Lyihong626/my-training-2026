@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box1">
+        我是box1
+        <span id="s1">我是s1</span>
+        <span id="s1">我是s1</span>
+    </div>
+    <input class="a" type="text" name="username" value="admin">
+    <script>
+        //
+        const box1 = document.getElementById("box1");
+        const ss = box1.getElementsByTagName("span");
+        const cns = box1.childNodes;
+        console.log(cns.length);
+        console.log(ss.length);
+
+        // box1.textContent="新的内容";
+        //直接向元素中插入HTML代码,有风险
+        // box1.innerHTML="新的内容";
+        //会进行转义
+        box1.innerText="新的内容111"
+
+        const box2 = document.querySelector("[id=box1]");
+        console.log("box2=",box2);
+
+        const input = document.querySelector("[name=username]");
+        console.log(input.type);
+
+        console.log(input.getAttribute("value"));
+        input.setAttribute("value","孙悟空");
+        input.setAttribute("disabled","disabled");
+        input.removeAttribute("disabled");
+
+
+
+    </script>
+</body>
+</html>

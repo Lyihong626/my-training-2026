@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*定时器*/
+        // console.time();
+        // setTimeout(function(){
+        //     console.timeEnd();
+        //     console.log("定时器执行了");
+        // },3000)
+        //  //使程序卡6s
+        //  const begin = Date.now();
+        //  while(Date.now()-begin<6000){}
+
+        //  console.time("间隔");
+        //  setInterval(function(){
+        //     console.timeEnd("间隔");
+        //     console.log("定时器执行了");
+
+        //     console.time("间隔");
+        //  },3000)
+
+        // console.time("间隔");
+        // setTimeout(function fn(){
+        //     console.timeEnd("间隔");
+        //     alert("hahaa");
+
+        //     console.time("间隔");
+        //     setTimeout(fn,3000);
+        // },3000)
+
+        //先执行2222，后执行11111
+        //因为222在栈，1111在队列
+        setTimeout(()=>{
+            console.log(11111);
+        },0)
+        console.log(22222);
+    </script>
+</body>
+</html>

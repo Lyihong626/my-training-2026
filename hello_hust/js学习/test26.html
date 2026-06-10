@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // window.onload(){
+        //     const btn = document.getElementById("btn");
+        //     btn.addEventListener("click",function(){
+        //      alert("hi");
+        // })
+    // }
+    // window.addEventListener("load",function(){
+    //     const btn = document.getElementById("btn");
+    //     btn.addEventListener("click",function(){
+    //         alert("hi");
+    //     })
+    // })
+    //DOM执行时间更早
+    window.addEventListener("DOMContentLoaded",function(){
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click",function(){
+            alert("hi");
+        })
+    })
+    </script>
+</head>
+<body>
+    <!-- <button id="btn" onmouseenter="alert('hello')">点击</button> -->
+     <button id="btn">点击</button>
+
+</body>
+</html>
