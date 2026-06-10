@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script>
+        /*
+        Navigate
+        
+        */
+    //    console.log(navigator.userAgent);
+
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click",()=>{
+        /*  
+        location
+        */
+    // console.log(location.href);
+    // location.assign("https://www.bilibili.com/");
+    // location.replace("https://www.bilibili.com/");
+    // location.reload(true);
+
+    /*
+    History
+    */
+   console.log(history.length);
+//    history.back();//回退
+// history.forward();//前进
+history.go( );//前进1  2  3  -1
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        table {
+            width: 400px;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        td,th{
+            border: 1px black solid;
+            padding: 10px 0;
+        }
+        
+
+        form div {
+            margin: 10px 0;
+        }
+        a{
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            //删除函数
+            function delEmpHandler(e) {
+
+                //阻止默认跳转
+                e.preventDefault();
+                // return false;
+
+                const tr = this.parentNode.parentNode
+                console.log(tr);
+
+                //弹出提示
+                if (confirm("确定要删除吗？")) {
+                    tr.remove();
+                }
+                // 检查列表是否为空
+                const tbody = document.querySelector("tbody");
+                if (tbody.children.length === 1) {//表头不能删
+                    alert("列表为空");
+                }
+            }
+
+            //修改函数
+            function editEmpHandler(e) {
+                e.preventDefault();
+                const tr = this.parentNode.parentNode;
+                //获取当前的三个数据单元格
+                const nameTd = tr.children[0];
+                const emailTd = tr.children[1];
+                const salaryTd = tr.children[2];
+
+                //弹出窗口，输入新的值
+                let newName = prompt("请输入新的姓名", nameTd.innerText);
+                let newEmail = prompt("请输入新的邮件", emailTd.innerText);
+                let newSalary = prompt("请输入新的薪资", salaryTd.innerText);
+                console.log(newName, newEmail, newSalary);
+
+                // 如果用户点击取消不做修改
+                if (newName !== null) nameTd.innerText = newName;
+                if (newEmail !== null) emailTd.innerText = newEmail;
+                if (newSalary !== null) salaryTd.innerText = newSalary;
+            }
+
+
+            const links = document.links;
+            console.log(links.length);
+            for (let i = 0; i < links.length; i++) {
+                //判断是修改还是删除操作
+                if (links[i].innerText === "删除") {
+                    links[i].onclick = delEmpHandler;
+                } else if (links[i].innerText === "修改") {
+                    links[i].onclick = editEmpHandler;
+                }
+            }
+
+            const tbody = document.querySelector("tbody");
+            const btn = document.getElementById("btn");
+            btn.onclick = function () {
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const salary = document.getElementById("salary").value;
+                //容易被XSS攻击
+                // tbody.insertAdjacentHTML(
+                //     "beforeend",
+                //     `
+                //     <tr>
+                //         <td>${name}</td>
+                //         <td>${email}</td>
+                //         <td>${salary}</td>
+                //         <td><a href="javascript:;">删除</a></td>
+                //     </tr>
+                //     `
+                // )
+
+                //不要用可以直接添加HTML的标签，有被攻击的风险
+
+                const tr = document.createElement("tr");
+                const nameTd = document.createElement("th");
+                const emailTd = document.createElement("th");
+                const salaryTd = document.createElement("th");
+
+                //添加文本
+                nameTd.innerText = name;//innerText不进行转义
+                emailTd.textContent = email;
+                salaryTd.textContent = salary;
+
+                //将三个td添加到tr
+                tr.appendChild(nameTd);
+                tr.appendChild(emailTd);
+                tr.appendChild(salaryTd);
+
+                //添加修改和删除链接
+                const actionNew = document.createElement("th");
+                actionNew.innerHTML = '<a href="javascript:;">修改</a> | <a href="javascript:;">删除</a>';
+                tr.appendChild(actionNew);
+
+                tbody.appendChild(tr);
+
+
+                //由于上边的超链接是新添加的，所以它的上边并没有绑定单级响应函数，所以新添加的员工无法删除
+                //解决方式:为新添加的超链接单独绑定响应函数
+
+                const newLinks = tbody.querySelectorAll("a");
+                newLinks[newLinks.length - 1].onclick = delEmpHandler;
+                newLinks[newLinks.length - 2].onclick = editEmpHandler;
+            }
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="outer">
+        <table>
+            <tbody>
+                <tr>
+                    <th>姓名</th>
+                    <th>邮件</th>
+                    <th>薪资</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <th>孙悟空</th>
+                    <th>123@a.com</th>
+                    <th>10000</th>
+                    <th><a href="#">修改</a> | <a href="#">删除</a></th>
+                </tr>
+                <tr>
+                    <th>猪八戒</th>
+                    <th>456@a.com</th>
+                    <th>20000</th>
+                    <th><a href="#">修改</a> | <a href="#">删除</a></th>
+                </tr>
+                <tr>
+                    <th>沙和尚</th>
+                    <th>789@a.com</th>
+                    <th>30000</th>
+                    <th><a href="#">修改</a> | <a href="#">删除</a></th>
+                </tr>
+            </tbody>
+        </table>
+        <form action="#">
+            <div>
+                <label for="name">姓名</label>
+                <input type="text" id="name" />
+            </div>
+            <div>
+                <label for="email">邮件</label>
+                <input type="email" id="email" />
+            </div>
+            <div>
+                <label for="salary">薪资</label>
+                <input type="number" id="salary" />
+            </div>
+            <button id="btn" type="button">提交</button>
+        </form>
+    </div>
+</body>
+
+</html>

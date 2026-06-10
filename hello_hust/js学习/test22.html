@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //字符串方法
+        let str = "hello";
+        console.log(str[0]);
+        for (let char of str){
+            console.log(char);
+        }
+        console.log(str.at(0));
+        console.log(str.charAt(0));
+
+        str = "how are you";
+        console.log(str.startsWith('h'));
+        console.log(str.lastIndexOf("are"));
+
+        str="100";
+        console.log(str.padStart(7,"*"));
+
+        str = "how are you how";
+
+        console.log(str.replaceAll("how","hello"));
+        console.log(str.slice(10,15));
+        console.log(str.substring(15,10));
+
+        console.log(str.split("o"));
+
+        str="     a   a   b    ";
+        console.log(str.trim());
+        console.log(str.trimStart());
+        console.log(str.trimEnd());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

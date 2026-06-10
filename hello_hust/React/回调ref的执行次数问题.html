@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <!--引入react核心库-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!--引入react-dom库-->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!--引入babel库-->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!--引入props-types,用于对组件标签属性进行限制-->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        //创建组件
+        class Demo extends React.Component {
+            state={
+                isHot:false,
+            }
+            saveInput = (c)=>{
+                this.input1 = c;
+                console.log('@', c);
+            }
+            showInfo = ()=>{
+                const { input1 } = this;
+                alert(input1.value);
+            }
+            changeWeather = ()=>{
+                const { isHot } = this.state;
+                this.setState({ isHot:!isHot });
+            }
+            render() {
+                const { isHot } = this.state;
+                return (
+                    <div>
+                        <h2>今天天气{isHot?'炎热':'凉爽'}</h2>
+                       //内联回调
+                        {/*<input ref={(c) => { this.input1 = c ;console.log('@', c)}} type="text" placeholder="请输入内容" />*/} 
+                        //类绑定回调
+                        <input ref={this.saveInput} type="text" placeholder="请输入内容" />
+                        <button onClick={this.showInfo}>显示输入内容</button>
+                        <button onClick={this.changeWeather}>切换天气</button>
+                        
+
+                    </div>
+                )
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Demo a="1" />, document.getElementById('test'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //递归
+
+        function jiecheng(num){
+            //基线条件
+            if(num===1){
+                return 1;
+            }
+            //递归条件
+            return jiecheng(num-1)*num;
+        }
+        console.log(jiecheng(6));
+        //斐波那契数列
+        function fib(n){
+            //基线
+            if(n<3){
+                return 1;
+            }
+            //递归
+            return fib(n-1)+fib(n-2);
+        }
+        let res = fib(5);
+        console.log(res);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

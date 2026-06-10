@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+        const personArr = [
+            new Person("孙悟空", 18),
+            new Person("沙和尚", 38),
+            new Person("红孩儿", 8),
+            new Person("白骨精", 16),
+        ]
+
+        function ff(a){
+            return a.age<18;
+        }
+
+        // filter()函数用来对数组进行过滤
+        //目前我们的函数只能过滤出数组中age属性小于18的对象
+        function filter(arr,fc) {
+            const newArr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (fc(arr[i])) {
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr;
+        }
+        result = filter(personArr,ff);
+        console.log(result);
+
+
+
+        //回调函数，高阶函数
+        /*希望在someFn()函数执行时，可以记录一条日志
+       在不修改原函数的基础上，为其增加记录日志的功能
+ 
+       可以通过高阶函数，来动态的生成一个新函数,扩展原来函数的功能
+        */
+        function someFn() {
+            return "hello";
+        }
+        function outer(cb) {
+            return () => {
+                console.log("记录日志。");//新增功能
+                const result = cb();//原来的函数功能
+
+                return result;
+            }
+        }
+        result = outer(someFn);
+        // console.log(result);
+        result();
+
+        function test() {
+            console.log("test");
+            return "test";
+        }
+        let newTest = outer(test);
+        newTest();
+        console.log(newTest);
+
+        //闭包
+
+        function outer1(){
+            let num=0;
+            return ()=>{
+                num++;
+                console.log(num);
+            }
+        }
+        //每次num+1
+        const newOuter = outer1();
+        newOuter();
+        newOuter();
+        newOuter();
+        num=1000;
+        newOuter();
+
+        
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

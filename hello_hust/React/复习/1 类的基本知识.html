@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            say(){
+                console.log(`我叫${this.name},今年${this.age}岁了`);
+            }
+        }
+        //类中的构造器不是必须写的，要对实例进行一些初始化操作的时候，如添加指定属性时候才写
+        //如果A继承了B类，A的构造器中没有写super()，则会默认添加super()，如果A的构造器中写了super()，则不会再添加super()了
+        //类中所定义的方法，都是放在原型对象上的
+        //创建student类继承person类
+        class Student extends Person{
+            constructor(name,age,grade){
+                super(name,age);//super一定放在最前面
+                this.grade = grade;
+            }
+            //重写父类的say方法
+            say(){
+                console.log(`我叫${this.name},今年${this.age}岁了,我在${this.grade}年级`);
+            }
+        }
+        const stu = new Student('张三',18,"3年级");
+        stu.say();
+    </script>
+</body>
+</html>

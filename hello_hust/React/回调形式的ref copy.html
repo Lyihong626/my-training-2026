@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <!--引入react核心库-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!--引入react-dom库-->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!--引入babel库-->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!--引入props-types,用于对组件标签属性进行限制-->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        //创建组件
+        class Demo extends React.Component {
+            showData1 = () => {
+                const { input1 } = this;
+                console.log(input1.value);
+                console.log(this);
+            }
+            showData2 = () => {
+                const { input2 } = this;
+                console.log(input2.value);
+                console.log(this);
+            }
+            render() {
+                return (
+                    <div>
+                        {/* c接收的就是这个 <input> 元素对应的 DOM 节点。 */}
+                        {/*之后，你可以在 showData1 等方法中通过
+                             this.input1 访问到这个 DOM 节点，进而读取其 value 等属性*/}
+                        <input ref={(c) => { this.input1 = c }} type="text" placeholder="请输入内容" />
+                        <button onClick={this.showData1}>显示输入内容</button>
+                        <input onBlur={this.showData2} ref={(c) => { this.input2 = c }} type="text" placeholder="失去焦点提示数据" />
+
+                    </div>
+                )
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Demo a="1" />, document.getElementById('test'));
+    </script>
+</body>
+
+</html>

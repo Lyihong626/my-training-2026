@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="numH1"></h1>
+    <script>
+        /*定时器*/
+        // const timer = setTimeout(()=>{
+        //     alert("我是定时器");
+        // },3000)
+        // clearTimeout(timer);
+        const numH1 = document.getElementById("numH1");
+        let num = 0;
+        const timer2 = setInterval(()=>{
+            console.log("haha");
+            num++;
+            numH1.textContent=num;
+            if(num===20){
+                clearInterval(timer2);
+            }
+        },1000)
+        // clearInterval(timer2);
+    </script>
+</body>
+</html>
