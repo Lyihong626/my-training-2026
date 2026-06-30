@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import Demo from './components/3_hooks'
+import React, { Component ,Fragment} from 'react'
+import Demo from './components/6_optimize'
 
 export default class App extends Component {
     render() {
         return (
-            <div>
+            <Fragment>
                 <Demo x={101}/>
-            </div>
+            </Fragment>
         )
     }
 }
