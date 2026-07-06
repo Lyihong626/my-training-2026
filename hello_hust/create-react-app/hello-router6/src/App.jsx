@@ -2,6 +2,7 @@ import React from 'react'
 import {  NavLink ,Navigate,useRoutes} from 'react-router-dom';
 import routes from './routes'
 import Header from './components/Header'
+import 'antd/dist/antd'
 
 export default function App() {
   function computedClassName({ isActive }) {
@@ -25,6 +26,9 @@ export default function App() {
             </NavLink>
             <NavLink className={computedClassName} to="/home" end>
               Home
+            </NavLink>
+            <NavLink className={computedClassName} to="/memorandum" end>
+              Memorandum
             </NavLink>
           </div>
         </div>
