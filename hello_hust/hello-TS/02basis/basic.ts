@@ -2,7 +2,7 @@
 let a:number;
 
 //a的类型设置为number，在以后的使用过程中a的值只能是number
-a = 10; //正确
+a = 10.1; //正确
 // a = 'hello'; //错误，不能将类型“string”分配给类型“number”
  
 let b:string;
@@ -15,7 +15,7 @@ let d = true; //声明变量d，并赋值为true，类型自动推断为boolean
 function sum(a:number, b:number):number{
     return a+b;
 }
-console.log(sum(10, 20)); //正确
+console.log(sum(10, 20)); 
 
 //可以直接使用字面量进行类型声明
 let e:10;
@@ -32,7 +32,7 @@ h=10;
 h='hello';
 h=true;
 
-//h的类型是any，b的类型是string，但是不能将类型“any”分配给类型“string”
+//h的类型是any，b的类型是string,但是会有危险
 b=h;
 
 let i:string;

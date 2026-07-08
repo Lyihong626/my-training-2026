@@ -2,7 +2,7 @@
 //声明变量a，同时指定它的类型为number
 let a;
 //a的类型设置为number，在以后的使用过程中a的值只能是number
-a = 10; //正确
+a = 10.1; //正确
 // a = 'hello'; //错误，不能将类型“string”分配给类型“number”
 let b;
 b = 'hello'; //正确
@@ -12,7 +12,7 @@ let d = true; //声明变量d，并赋值为true，类型自动推断为boolean
 function sum(a, b) {
     return a + b;
 }
-console.log(sum(10, 20)); //正确
+console.log(sum(10, 20));
 //可以直接使用字面量进行类型声明
 let e;
 e = 10;
@@ -26,3 +26,29 @@ let h;
 h = 10;
 h = 'hello';
 h = true;
+//h的类型是any，b的类型是string,但是会有危险
+b = h;
+let i;
+i = h; //正确，any类型可以赋值给任意类型
+//unknown类型表示未知类型的值,实际上是一个类型安全的any类型
+//unknown类型的变量只能赋值给unknown类型和any类型的变量，不能赋值给其他类型的变量
+let j;
+j = 'hello';
+if (typeof j === 'string') {
+    i = j; //正确，j的类型是unknown，但是经过类型判断后，j的类型被缩小为string类型
+}
+//类型断言
+let k = j; //将j的类型断言为string类型
+k = j; //将j的类型断言为string类型
+function fn1(num) {
+    if (num > 0) {
+        return 1;
+    }
+    return 0;
+}
+//void用来表示空，没有返回值
+function fn2() { }
+//never 表示永远不会返回结果, 
+function fn3() {
+    throw new Error('报错了');
+}
