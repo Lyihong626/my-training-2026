@@ -2,25 +2,20 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-//webpack中的所有的配置信息都应该写在module.exports
 module.exports = {
     mode: 'development',
-    //指定入口文件
-    entry: "./11LessTest/index.tsx",
+    entry: "./13表格/index.tsx",
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
     },
-    //指定打包文件所在目录
     output: {
-        //指定打包文件的目录
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js",
     },
-    //指定webpack打包时要使用模块
     module: {
         rules: [
             {
-                test: /\.tsx?$/,  // 改为匹配 .ts 和 .tsx
+                test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/
             },
@@ -45,12 +40,19 @@ module.exports = {
             }
         ]
     },
-    //配置webpack插件
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            // title:"这是一个自定义的title"
             template: "./src/index.html"
         }),
     ],
-}
+    devServer: {
+        historyApiFallback: true,   // 关键：所有路由回退到 index.html
+        headers: {
+    'Content-Security-Policy': 
+      "default-src 'self' http://localhost:8080 ws://localhost:8080 'unsafe-eval' 'unsafe-inline'; " +
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline'; " +
+      "connect-src *; "   // 允许任意源连接（含 webpack://）
+  }
+    }
+};
