@@ -1,12 +1,10 @@
 import React from 'react'
 import { Col, Layout, Row } from 'antd';
-import Table from './components/TableTest'
-
-const { Header, Content, Footer, Sider } = Layout;
+import Form from './components/FormTest'
 
 //根组件，存放RecoilRoot
 export default function App() {
   return (
-    <Table/>
+    <Form/>
   )
 }
