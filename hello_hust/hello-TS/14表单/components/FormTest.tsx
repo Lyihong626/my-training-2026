@@ -64,7 +64,7 @@ export default function FormTest() {
     //将时间范围转换为时间戳
     if (formData.timerange) {
       const [start, end] = formData.timerange;
-      formData.timerange = [start.valueOf(), end.valueOf()];
+      formData.timerange = [start.valueOf(), end.valueOf()];//转换为时间戳
     }
     //数字输入框的值转为number
     if (!formData.num) {
@@ -117,7 +117,7 @@ export default function FormTest() {
           {/* 只能输入数字 */}
           <Input allowClear
             onChange={(e) => {
-              //过滤非数字
+              //过滤非数字,正则表达式
               const value = e.target.value.replace(/[^0-9.]/g, '');
               //Input的值是由Form控制的，修改了事件对象的value，但Form里的数据没变
               //更新表单字段值
