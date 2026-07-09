@@ -10,6 +10,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["11LessTest/**/*"],
+  "include": ["13表格/**/*"],
   "exclude": ["node_modules", "dist"]
 }
