@@ -10,7 +10,7 @@ export default function Login() {
 
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
-
+ 
   const login=()=>{
     if(!user||!pwd){
       alert('请输入账号和密码');
