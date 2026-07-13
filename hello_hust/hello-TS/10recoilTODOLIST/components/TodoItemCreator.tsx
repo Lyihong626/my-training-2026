@@ -22,7 +22,7 @@ export default function TodoItemCreator() {
     setTodoList((oldList) => [...oldList, { id: nanoid(), title: titleValue, content: contentValue, isComplete: false }]);
     setTitleValue('');
     setContentValue('');
-  }
+  } 
   const deleteItem=()=>{
     setTitleValue('');
     setContentValue('');

@@ -10,6 +10,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["10recoilTODOLIST/**/*"],
+  "include": ["12登录/**/*"],
   "exclude": ["node_modules", "dist"]
 }
