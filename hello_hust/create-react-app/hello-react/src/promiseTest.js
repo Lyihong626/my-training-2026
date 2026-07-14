@@ -6,7 +6,7 @@ const fs = require('fs');
 // }) 
 //promise形式
 let p = new Promise((resolve, reject) => {
-    fs.readFile('./src/content.txt', (err, data) => {
+    fs.readFile('./content.txt', (err, data) => {
         if (err) reject(err);
         resolve(data);
     })
