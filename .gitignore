@@ -1,2 +1,4 @@
-**/node_modules/"postgres_01.bakk" 
-"postgres_0415.sql" 
+**/node_modules/
+postgres_01.bakk
+postgres_0415.sql
+*.bak
