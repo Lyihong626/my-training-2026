@@ -1,5 +1,7 @@
 import { createParamDecorator ,ExecutionContext} from "@nestjs/common";
-import { User } from "./user.entity";
+// import { User } from "./user.entity";
+import {user} from '../../generated/prisma/client'
+type User = user;
 
 // 自定义装饰器
 export const GetUser = createParamDecorator(

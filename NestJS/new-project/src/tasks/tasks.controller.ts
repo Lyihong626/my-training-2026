@@ -1,26 +1,32 @@
 import { Controller, Get, Post, Body, Param, Delete, Patch, Query, UseGuards } from '@nestjs/common';
-import { TasksService } from './tasks.service';
+// import { TasksService } from './tasks.service';
 import type { TaskStatus } from './tasks.module';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
-import { Task } from './task.entity';
+// import { Task } from './task.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../auth/get-user.decorator';
-import { User } from '../auth/user.entity';
+// import { User } from '../auth/user.entity';
+import { TaskPrismaService } from './tasks-prisma.service';
+import {task,user} from '../../generated/prisma/client'
+
+type Task = task;
+type User = user;
 
 @Controller('tasks')
 // 在所有业务逻辑执行之前，先执行这一段验证代码。
 @UseGuards(AuthGuard())// 当请求进来时，自动调用 JwtStrategy 里的 validate 方法
 export class TasksController {
-    constructor(private tasksService: TasksService) { }
+    //注入 Prisma Service
+    constructor(private taskPrismaService:TaskPrismaService){}
 
     @Get()
     getTasks(
         @Query() filterDto: GetTasksFilterDto,
         @GetUser() user: User,
     ): Promise<Task[]> {
-        return this.tasksService.getTasks(filterDto, user);
+        return this.taskPrismaService.getTasks(filterDto, user);
     }
 
     @Get('/:id')//路径参数
@@ -28,7 +34,7 @@ export class TasksController {
         @Param('id') id: string,
         @GetUser() user: User,
     ): Promise<Task> {
-        return this.tasksService.getTaskById(id, user);
+        return this.taskPrismaService.getTaskById(id, user);
     }
 
     @Post()
@@ -36,7 +42,7 @@ export class TasksController {
         @Body() dto: CreateTaskDto,
         @GetUser() user: User,
     ): Promise<Task> {
-        return this.tasksService.createTask(dto, user);
+        return this.taskPrismaService.createTask(dto, user);
     }
 
     @Delete('/:id')
@@ -44,7 +50,7 @@ export class TasksController {
         @Param('id') id: string,
         @GetUser() user: User,
     ): Promise<void> {
-        return this.tasksService.deleteTask(id, user);
+        return this.taskPrismaService.deleteTask(id, user);
     }
 
     @Patch('/:id/status')
@@ -54,7 +60,7 @@ export class TasksController {
         @GetUser() user: User,
     ): Promise<Task> {
         const { status } = updateTaskStatusDto;
-        return this.tasksService.updateTaskStatus(id, status, user);
+        return this.taskPrismaService.updateTaskStatus(id, status, user);
     }
 
 }
