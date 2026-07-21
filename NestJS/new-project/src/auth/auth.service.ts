@@ -29,10 +29,10 @@ export class AuthService {
         } catch (error) {
             const pgerror = error as any;
             console.log(pgerror.code);
-            if (pgerror.code === '23505') {
+            if (pgerror.code === '23505'||pgerror.code==='P2002') {
                 throw new ConflictException('用户名已存在');
             } else {
-                throw new InternalServerErrorException();
+                throw new InternalServerErrorException('注册失败');
             }
         }
     }

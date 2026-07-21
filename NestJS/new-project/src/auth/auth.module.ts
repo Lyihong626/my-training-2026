@@ -8,10 +8,11 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { PrismaModule } from '../prisma/prisma.module';
+import { AuthResolver } from './auth.resolver';
 
 @Module({
   imports: [
-    PassportModule.register({ defaultStrategy: 'jwt' }),
+    PassportModule.register({ defaultStrategy: 'jwt' ,session: false}),
     JwtModule.register({
       secret: 'topSecret51',
       signOptions: {
@@ -21,7 +22,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     PrismaModule,
     // TypeOrmModule.forFeature([User]),
   ],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy,AuthResolver],
   controllers: [AuthController],
   exports: [JwtStrategy, PassportModule,],
 })

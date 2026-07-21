@@ -5,7 +5,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { JwtPayLoad } from "./jwt-payload.interface";
 import { Strategy, ExtractJwt } from 'passport-jwt';
 // import { User } from "./user.entity";
-import {user} from '../../generated/prisma/client';
+import {user} from '@prisma/client';
 import { PrismaService } from "../prisma/prisma.service";
 type User = user;
 
@@ -22,10 +22,12 @@ export class JwtStrategy extends PassportStrategy(Strategy){
     }
 
     async validate(payload:JwtPayLoad):Promise<User>{// 3. 验证通过后调用
+        console.log('JWT Payload:', payload);
         const {username} = payload;
         const user = await this.prisma.user.findUnique({
             where:{username},
         });
+        console.log('找到的用户:', user);
 
         if(!user){
             throw new UnauthorizedException();

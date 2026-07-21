@@ -1,12 +1,10 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
+import { PrismaService } from "../prisma/prisma.service.js";
 import { GetTasksFilterDto } from "./dto/get-tasks-filter.dto";
-// import { User } from "../auth/user.entity";
-// import { Task } from "./task.entity";
 import { CreateTaskDto } from "./dto/create-task.dto";
-// import { TaskStatus } from "./task-status-enum";
-import { TaskStatus } from "../../generated/prisma/enums";
-import {task,user} from '../../generated/prisma/client'
+// import { TaskStatus } from "../../generated/prisma/enums";
+import {task,user} from '@prisma/client';
+import { TaskStatus } from '@prisma/client';
 
 type Task = task;
 type User = user;

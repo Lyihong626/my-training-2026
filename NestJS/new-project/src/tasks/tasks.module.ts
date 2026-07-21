@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from '../auth/auth.module';
 import { PrismaModule } from '../prisma/prisma.module';
 import { TaskPrismaService } from './tasks-prisma.service';
+import { TasksResolver } from './tasks.resolver';
 
 
 @Module({
@@ -16,11 +17,12 @@ import { TaskPrismaService } from './tasks-prisma.service';
     AuthModule,
     PrismaModule,
   ],
-  controllers: [TasksController],
+  // controllers: [TasksController],
   providers: [
     // TasksService,
     //TasksRepository,
-    TaskPrismaService
+    TaskPrismaService,
+    TasksResolver,
   ],
 })
 export class TasksModule {}
