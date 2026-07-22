@@ -10,6 +10,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["12登录/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
