@@ -9,7 +9,7 @@ export class AuthCredentialsDto{
     
     @IsNotEmpty()
     @IsString()
-    @MinLength(8)
+    @MinLength(6)
     @MaxLength(32)
     @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,{
         message:'密码太弱'
