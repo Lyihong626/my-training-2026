@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  root: './src',
+  // root: './src',
   server: {
     port: 3001,
     open: true,  // Vite 前端 React 项目

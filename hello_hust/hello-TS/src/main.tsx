@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom/client'
 import 'antd/dist/antd.variable.min.css';
 import { ConfigProvider } from 'antd'
 import { BrowserRouter, RouterProvider } from 'react-router-dom';
-import { router } from './router';
+import 'antd/dist/antd.variable.min.css';
 import App from './App';
+import { ApolloProvider } from '@apollo/client/react';
+import { client } from './apollo/client';
 
 ConfigProvider.config({
     theme: { primaryColor: 'rgb(224, 170, 54)' }
@@ -15,9 +17,11 @@ ConfigProvider.config({
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <ApolloProvider client={client}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </ApolloProvider>
     </React.StrictMode>
 
 )
